@@ -30,7 +30,6 @@ const TopNavigation = ({ index, setIndex }) => {
         </TouchableOpacity>
       )}
 
-      {/*  */}
       <Text style={{ ...styles.center, color: '#fff' }}>
         {index ? 'All News' : 'Discover'}
       </Text>
@@ -76,5 +75,17 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
+  },
+  right: {
+    width: 80,
+    alignItems: 'flex-end',
+  },
+  center: {
+    paddingBottom: 6,
+    borderBottomColor: SecondaryColor,
+    borderBottomWidth: 5,
+    borderRadius: 10,
+    fontSize: 16,
+    fontWeight: '700',
   },
 });

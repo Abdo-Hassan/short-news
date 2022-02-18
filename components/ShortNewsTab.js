@@ -7,7 +7,6 @@ import TopNavigation from './TopNavigation';
 
 const ShortNewsTab = () => {
   const layout = useWindowDimensions();
-  const [index, setIndex] = useState(1);
 
   const [routes] = useState([
     { key: 'first', title: 'Discover' },
