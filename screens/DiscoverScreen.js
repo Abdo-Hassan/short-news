@@ -13,7 +13,7 @@ import { categories, sources } from '../utils/api';
 import Search from '../components/Search';
 
 const DiscoverScreen = () => {
-  const { setCategory, setSource } = useContext(NewsContext);
+  const { setCategory, setSource, darkTheme } = useContext(NewsContext);
 
   return (
     <View style={styles.discover}>
@@ -21,7 +21,10 @@ const DiscoverScreen = () => {
       <Search />
 
       {/* categories */}
-      <Text style={{ ...styles.subtitle, color: '#fff' }}>Categories</Text>
+      <Text
+        style={{ ...styles.subtitle, color: darkTheme ? '#fbfbfb' : '#000' }}>
+        Categories
+      </Text>
       <FlatList
         data={categories}
         keyExtractor={(item) => item.name}
@@ -31,13 +34,19 @@ const DiscoverScreen = () => {
             style={styles.category}
             onPress={() => setCategory(item?.name)}>
             <Image source={{ uri: item?.pic }} style={styles.categoryImage} />
-            <Text style={{ ...styles.name, color: '#fff' }}>{item?.name}</Text>
+            <Text
+              style={{ ...styles.name, color: darkTheme ? '#fbfbfb' : '#000' }}>
+              {item?.name}
+            </Text>
           </TouchableOpacity>
         )}
       />
 
       {/* sources */}
-      <Text style={{ ...styles.subtitle, color: '#fff' }}>Sources</Text>
+      <Text
+        style={{ ...styles.subtitle, color: darkTheme ? '#fbfbfb' : '#000' }}>
+        Sources
+      </Text>
       <View style={styles.sources}>
         {sources?.map((source) => (
           <TouchableOpacity

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   View,
   StyleSheet,
@@ -10,10 +10,13 @@ import {
   Linking,
 } from 'react-native';
 import { PrimaryColor } from '../constants/Theme';
+import { NewsContext } from '../utils/Context';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 const SingleNews = ({ item, index }) => {
+  const { darkTheme } = useContext(NewsContext);
+
   return (
     <View
       style={{
@@ -25,12 +28,20 @@ const SingleNews = ({ item, index }) => {
         style={{ height: '35%', resizeMode: 'cover', width: windowWidth }}
       />
 
-      <View style={{ ...styles.description, backgroundColor: PrimaryColor }}>
-        <Text style={{ ...styles.title, color: '#fff' }}>{item?.title}</Text>
-        <Text style={{ ...styles.content, color: '#fff' }}>
+      <View
+        style={{
+          ...styles.description,
+          backgroundColor: darkTheme ? PrimaryColor : '#fbfbfb',
+        }}>
+        <Text
+          style={{ ...styles.title, color: darkTheme ? '#fbfbfb' : '#000' }}>
+          {item?.title}
+        </Text>
+        <Text
+          style={{ ...styles.content, color: darkTheme ? '#fbfbfb' : '#000' }}>
           {item?.description}
         </Text>
-        <Text style={{ color: '#fff' }}>
+        <Text style={{ color: darkTheme ? '#fbfbfb' : '#000' }}>
           News by : {item?.author ?? 'unknown'}
         </Text>
 
@@ -39,10 +50,16 @@ const SingleNews = ({ item, index }) => {
           style={styles.footer}
           blurRadius={30}>
           <TouchableOpacity onPress={() => Linking.openURL(item?.url)}>
-            <Text style={{ fontSize: 15, color: '#fff' }}>
+            <Text
+              style={{ fontSize: 15, color: darkTheme ? '#fbfbfb' : '#000' }}>
               {item?.content?.slice(0, 45)}...
             </Text>
-            <Text style={{ fontSize: 17, fontWeight: 'bold', color: '#fff' }}>
+            <Text
+              style={{
+                fontSize: 17,
+                fontWeight: 'bold',
+                color: darkTheme ? '#fbfbfb' : '#000',
+              }}>
               Read More
             </Text>
           </TouchableOpacity>
@@ -55,7 +72,6 @@ const SingleNews = ({ item, index }) => {
 const styles = StyleSheet.create({
   title: {
     fontSize: 20,
-    color: '#fff',
     fontWeight: 'bold',
     paddingBottom: 10,
   },

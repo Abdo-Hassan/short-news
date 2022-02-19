@@ -15,6 +15,7 @@ import SingleNews from './SingleNews';
 const Search = () => {
   const {
     news: { articles },
+    darkTheme,
   } = useContext(NewsContext);
 
   const [searchResults, setSearchResults] = useState([]);
@@ -42,8 +43,12 @@ const Search = () => {
       <TextInput
         onChangeText={(text) => handleSearch(text)}
         placeholder='Search for news'
-        placeholderTextColor={'#fff'}
-        style={{ ...styles.search, backgroundColor: '#000', color: '#fff' }}
+        placeholderTextColor={darkTheme ? '#fbfbfb' : '#000'}
+        style={{
+          ...styles.search,
+          backgroundColor: darkTheme ? '#000' : 'lightgrey',
+          color: darkTheme ? '#fbfbfb' : '#000',
+        }}
       />
 
       <View style={styles.searchResults}>
@@ -58,8 +63,8 @@ const Search = () => {
               <Text
                 style={{
                   ...styles.singleResult,
-                  backgroundColor: '#000',
-                  color: '#fff',
+                  backgroundColor: darkTheme ? '#000' : 'lightgrey',
+                  color: darkTheme ? '#fbfbfb' : '#000',
                 }}>
                 {item?.title}
               </Text>
@@ -77,7 +82,11 @@ const Search = () => {
         <TouchableOpacity
           onPress={() => setModalVisible(!modalVisible)}
           style={{ position: 'absolute', zIndex: 2, right: 0, margin: 20 }}>
-          <Entypo name='circle-with-cross' size={30} color='#fff' />
+          <Entypo
+            name='circle-with-cross'
+            size={30}
+            color={darkTheme ? '#fbfbfb' : '#000'}
+          />
         </TouchableOpacity>
         <View style={{ height: '100%' }}>
           <SingleNews item={currentNews} />
@@ -105,7 +114,7 @@ const styles = StyleSheet.create({
   singleResult: {
     borderRadius: 5,
     padding: 10,
-    margin: 0.5,
+    margin: 2,
     shadowColor: '#000',
     elevation: 5,
   },

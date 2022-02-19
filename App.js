@@ -11,7 +11,7 @@ function App() {
     <View
       style={{
         ...styles.container,
-        backgroundColor: darkTheme ? PrimaryColor : '#fff',
+        backgroundColor: darkTheme ? PrimaryColor : '#fbfbfb',
       }}>
       <ShortNewsTab />
       <StatusBar style='auto' backgroundColor={PrimaryColor} />
