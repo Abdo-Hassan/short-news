@@ -17,7 +17,7 @@ const NewsScreen = () => {
       {articles && (
         <Carousel
           layout={'stack'}
-          data={articles?.slice(0, 10)}
+          data={articles?.slice(0, 20)}
           sliderHeight={300}
           itemHeight={windowHight}
           vertical={true}
@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
   carousel: {
     flex: 1,
     backgroundColor: '#000',
-    // transform: [{ scaleY: -1 }],
   },
 });
 

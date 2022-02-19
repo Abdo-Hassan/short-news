@@ -19,11 +19,10 @@ const SingleNews = ({ item, index }) => {
       style={{
         height: windowHeight,
         width: windowWidth,
-        // transform: [{ scaleY: -1 }],
       }}>
       <Image
         source={{ uri: item?.urlToImage }}
-        style={{ height: '45%', resizeMode: 'cover', width: windowWidth }}
+        style={{ height: '35%', resizeMode: 'cover', width: windowWidth }}
       />
 
       <View style={{ ...styles.description, backgroundColor: PrimaryColor }}>
@@ -32,8 +31,7 @@ const SingleNews = ({ item, index }) => {
           {item?.description}
         </Text>
         <Text style={{ color: '#fff' }}>
-          News by
-          {item?.author ?? 'unknown'}
+          News by : {item?.author ?? 'unknown'}
         </Text>
 
         <ImageBackground
@@ -56,23 +54,27 @@ const SingleNews = ({ item, index }) => {
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: 25,
+    fontSize: 20,
     color: '#fff',
     fontWeight: 'bold',
     paddingBottom: 10,
   },
   content: {
-    fontSize: 18,
+    fontSize: 16,
     paddingBottom: 10,
   },
   footer: {
     height: 80,
     width: windowWidth,
     position: 'absolute',
-    bottom: 0,
+    bottom: 55,
     backgroundColor: '#d7be69',
     justifyContent: 'center',
     paddingHorizontal: 20,
+  },
+  description: {
+    padding: 15,
+    flex: 1,
   },
 });
 
