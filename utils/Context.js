@@ -1,26 +1,52 @@
 import { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import { getNewsAPI } from './api';
+import { getNewsAPI, getSourceAPI } from './api';
 
 export const NewsContext = createContext();
 
 const NewsContextProvider = ({ children }) => {
   const [index, setIndex] = useState(1);
   const [news, setNews] = useState([]);
+  const [source, setSource] = useState('');
   const [category, setCategory] = useState('general');
 
   const fetchNews = async () => {
-    const { data } = await axios.get(getNewsAPI(category));
-    setNews(data);
-    setIndex(1);
+    try {
+      const { data } = await axios.get(getNewsAPI(category));
+      setIndex(1);
+      setNews(data);
+    } catch (error) {
+      console.log('~ error', error);
+    }
+  };
+
+  const fetchNewsFromSource = async () => {
+    try {
+      const { data } = await axios.get(getSourceAPI(source));
+      setNews(data);
+      setIndex(1);
+    } catch (error) {
+      console.log('~ error', error);
+    }
   };
 
   useEffect(() => {
     fetchNews();
   }, [category]);
 
+  useEffect(() => {
+    fetchNewsFromSource();
+  }, [source]);
+
   return (
-    <NewsContext.Provider value={{ index, news, setIndex, fetchNews }}>
+    <NewsContext.Provider
+      value={{
+        index,
+        news,
+        setIndex,
+        setCategory,
+        setSource,
+      }}>
       {children}
     </NewsContext.Provider>
   );
