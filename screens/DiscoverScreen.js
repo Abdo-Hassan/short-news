@@ -10,6 +10,7 @@ import {
 import { SecondaryColor } from '../constants/Theme';
 import { NewsContext } from '../utils/Context';
 import { categories, sources } from '../utils/api';
+import Search from '../components/Search';
 
 const DiscoverScreen = () => {
   const { setCategory, setSource } = useContext(NewsContext);
@@ -17,6 +18,7 @@ const DiscoverScreen = () => {
   return (
     <View style={styles.discover}>
       {/* search */}
+      <Search />
 
       {/* categories */}
       <Text style={{ ...styles.subtitle, color: '#fff' }}>Categories</Text>

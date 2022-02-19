@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import {
   AntDesign,
@@ -6,13 +6,18 @@ import {
   SimpleLineIcons,
 } from '@expo/vector-icons';
 import { PrimaryColor, SecondaryColor } from '../constants/Theme';
+import { NewsContext } from '../utils/Context';
 
 const TopNavigation = ({ index, setIndex }) => {
+  const { setDarkTheme, darkTheme } = useContext(NewsContext);
+
   return (
     <View style={{ ...styles.container, backgroundColor: PrimaryColor }}>
       {/* Top bar */}
       {index === 0 ? (
-        <TouchableOpacity style={styles.left}>
+        <TouchableOpacity
+          style={styles.left}
+          onPress={() => setDarkTheme(!darkTheme)}>
           <Text style={{ ...styles.text, color: 'lightgrey' }}>
             <MaterialCommunityIcons
               name='theme-light-dark'

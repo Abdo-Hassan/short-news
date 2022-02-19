@@ -7,6 +7,7 @@ export const NewsContext = createContext();
 const NewsContextProvider = ({ children }) => {
   const [index, setIndex] = useState(1);
   const [news, setNews] = useState([]);
+  const [darkTheme, setDarkTheme] = useState(true);
   const [source, setSource] = useState('');
   const [category, setCategory] = useState('general');
 
@@ -43,9 +44,11 @@ const NewsContextProvider = ({ children }) => {
       value={{
         index,
         news,
+        darkTheme,
         setIndex,
         setCategory,
         setSource,
+        setDarkTheme,
       }}>
       {children}
     </NewsContext.Provider>
