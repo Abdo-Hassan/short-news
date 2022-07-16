@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     height: 80,
     width: windowWidth,
     position: 'absolute',
-    bottom: 0,
+    bottom: 60,
     backgroundColor: '#d7be69',
     justifyContent: 'center',
     paddingHorizontal: 20,
